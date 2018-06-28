@@ -1,54 +1,74 @@
 #name {
     font-size: 7vw;
-    margin-top: 20px;
+    width: 100%;
+    font-weight: bold;
+    font-variant: small-caps;
 }
+
 #tagline {
     font-size: 4vw;
+    width: 100%;
+    white-space: nowrap;
+}
+
+#links {
+    font-size: 4vw;
+    width: 100%;
 }
 
 @media (min-width: 576px) {
     #name {
         font-size: 40px;
-        margin-top: 28px;
     }
     #tagline {
         font-size: 22px;
         margin-top: -8px;
+    }
+    #links {
+        font-size: 22px;
+        margin-top: 8px;
     }
 }
 
 @media (min-width: 768px) {
     #name {
         font-size: 52px;
-        margin-top: 40px;
     }
     #tagline {
         font-size: 28px;
         margin-top: -12px;
+    }
+    #links {
+        font-size: 28px;
+        margin-top: 10px;
     }
 }
 
 @media (min-width: 992px) {
     #name {
         font-size: 74px;
-        margin-top: 50px;
     }
     #tagline {
         font-size: 42px;
         margin-top: -20px;
     }
+    #links {
+        font-size: 42px;
+        margin-top: 15px;
+    }
 }
 
-
-
 @media (min-width: 1200px) {
-    #name {
+    #name, #links {
         font-size: 90px;
-        margin-top: 60px;
     }
     #tagline {
         font-size: 50px;
         margin-top: -30px;
+    }
+    #links {
+        font-size: 50px;
+        margin-top: 20px;
     }
 }
 
@@ -56,16 +76,32 @@ body {
     font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
     color: #333;
     background-color: #eee;
-    padding-top: 50px;
+    text-align: center;
 }
 
-#name {
-    font-weight: bold;
-    font-variant: small-caps;
+a {
+    color: #666;
+    text-decoration: none;
 }
 
-#tagline {
-    white-space: nowrap;
+a:hover {
+    color: #333;
+}
+
+.vertical-center {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#container {
+    padding-bottom: 50px;
+}
+
+.wodry span {
+    width: 100%;
 }
 
 #headshot {
