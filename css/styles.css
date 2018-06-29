@@ -14,6 +14,7 @@
 #links {
     font-size: 4vw;
     width: 100%;
+    margin-bottom: 8vh;
 }
 
 @media (min-width: 576px) {
@@ -96,10 +97,6 @@ a:hover {
     justify-content: center;
 }
 
-#container {
-    padding-bottom: 50px;
-}
-
 .wodry span {
     width: 100%;
 }
@@ -109,6 +106,7 @@ a:hover {
     overflow: hidden;
     border-radius: 50%;
     border: 2px solid #333;
+    margin-bottom: 8vh;
 }
 
 #headshot img {
