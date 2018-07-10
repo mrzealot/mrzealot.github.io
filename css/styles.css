@@ -80,12 +80,13 @@ body {
     text-align: center;
 }
 
-a {
+a, #cv {
     color: #666;
     text-decoration: none;
+    cursor: pointer;
 }
 
-a:hover {
+a:hover, #cv:hover {
     color: #333;
 }
 
@@ -117,4 +118,50 @@ a:hover {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+
+#cv-col {
+    position: relative;
+}
+
+.cv-version {
+    position: absolute;
+    opacity: 0;
+
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    transform: scale(0);
+}
+
+.cv-version.open {
+    opacity: 1;
+
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+}
+
+#print {
+    top: 0%;
+    left: 35%;
+}
+
+#print.open {
+    top: 120%;
+    left: 0%;
+}
+
+#screen {
+    top: 0%;
+    left: 35%;
+}
+
+#screen.open {
+    top: 120%;
+    left: 70%;
 }

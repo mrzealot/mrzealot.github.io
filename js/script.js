@@ -203,5 +203,13 @@ $(function(){
     }
 
     $(window).on('resize', resize)
+
+
+
+    // CV menu
+
+    $('#cv').on('click', function() {
+        $('.cv-version').toggleClass('open')
+    })
     
 })
