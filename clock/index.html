@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>MrZealot's Dumb Phone Clock</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="hack_webfont/stylesheet.css">
+
+  <style>
+    body {
+      font-family: 'hackbold', Arial, sans-serif;
+      color: gray;
+      background-color: #111;
+      margin: 2vw;
+    }
+
+    #clock {
+      font-size: 25vw;
+      text-align: center;
+      background-color: #111;
+      padding: 8vw;
+    }
+    
+    #date {
+      font-size: 5vw;
+      text-align: center;
+    }
+
+    .color, .fullscreen {
+      width: 12vw;
+      height: 8vw;
+      border-radius: 1vw;
+    }
+
+    .color {
+      float: left;
+      margin-right: 1.5vw;
+    }
+
+    .fullscreen {
+      float: right;
+      font-size: 10vw;
+      line-height: 10vw;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="settings">
+    <div class="color" data-color="#e94348"></div>
+    <div class="color" data-color="#ffca3a"></div>
+    <div class="color" data-color="#8ac926"></div>
+    <div class="color" data-color="#1982c4"></div>
+    <div class="color" data-color="#6a4c93"></div>
+    <div class="color" data-color="gray"></div>
+
+    <div class="fullscreen">&#x26F6;</div>
+  </div>
+
+  <div id="clock">
+    <div id="time"></div>
+    <div id="date"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/5.1.0/screenfull.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $(function() {
+
+      // color settings
+      $('.color').each(function() {
+        const that = $(this)
+        that.css('background-color', that.data('color'))
+        that.click(function() {
+          $('#clock').css('color', that.data('color'))
+        })
+      })
+
+      // refresh clock
+      setInterval(function() {
+        const days=['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo']
+        const m = moment()
+        $('#time').html(m.format('HH:mm'))
+        $('#date').html(`${m.format('YYYY-MM-DD')} (${days[m.format('d')]})`)
+      }, 1000)
+
+      // fullscreen
+      $('.fullscreen').click(function() {
+        screenfull.request($('#clock')[0], {navigationUI: 'hide'})
+      })
+    })
+  </script>
+
+</body>
+
+</html>
+
+
