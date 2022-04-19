@@ -18,16 +18,23 @@
     }
 
     #clock {
-      font-size: 25vw;
-      line-height: 15vw;
-      padding-top: 12.5vw;
       text-align: center;
       background-color: #111;
+      padding-top: calc(50vh - 15vw);
+    }
+
+    #time {
+      font-size: 25vw;
+      line-height: 25vw;
     }
     
     #date {
       font-size: 5vw;
-      text-align: center;
+      line-height: 5vw;
+    }
+
+    #settings {
+      clear: both;
     }
 
     .color, .fullscreen {
@@ -39,7 +46,7 @@
     .color {
       float: left;
       margin-right: 1.5vw;
-      margin-bottom: 10vw;
+      margin-bottom: 6vw;
     }
 
     .fullscreen {
@@ -60,7 +67,7 @@
     <div class="color" data-color="#ffca3a"></div>
     <div class="color" data-color="#8ac926"></div>
     <div class="color" data-color="#1982c4"></div>
-    <div class="color" data-color="#6a4c93"></div>
+    <div class="color" data-color="#6a4c94"></div>
     <div class="color" data-color="gray"></div>
 
     <div class="fullscreen">&#x26F6;</div>
@@ -86,13 +93,25 @@
         })
       })
 
-      // refresh clock
-      setInterval(function() {
-        const days=['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo']
+      // clock format
+      const days = ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo']
+      const refresh = () => {
         const m = moment()
         $('#time').html(m.format('HH:mm'))
         $('#date').html(`${m.format('YYYY-MM-DD')} (${days[m.format('d')]})`)
-      }, 1000)
+      }
+
+      // refresh A) immediately, B) at the next new minute, and C) every minute from then on
+      // more prep, but minimal polling
+      refresh()
+      const start = moment()
+      const until_new_minute = start.clone().add(1, 'minutes').startOf('minute').diff(start)
+      setTimeout(function() {
+        refresh()
+        setInterval(function() {
+          refresh()
+        }, 60 * 1000)
+      }, until_new_minute)
 
       // fullscreen
       $('.fullscreen').click(function() {
